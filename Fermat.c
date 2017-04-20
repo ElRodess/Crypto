@@ -43,15 +43,13 @@ void testFermat(mpz_t n, mpz_t rep)
         
         mpz_t n3;
         mpz_init(n3);
-        mpz_sub_ui(n3,n,3);
+        mpz_sub_ui(n3,n,4);
 
         while(mpz_cmp(i,rep)<=0)
         {
                 mpz_urandomm(a,state,n3);
                 mpz_add_ui(a,a,2);
-                gmp_printf("a = %Zd r= ",a);
                 S_and_M(a,n,n2,r);
-                gmp_printf("%Zd \n",r);
                 if(mpz_cmp_si(r,1)!=0)
                 {
                         printf("Le nombre est composé \n");
@@ -79,7 +77,15 @@ int main()
         gmp_scanf("%Zd", &n);
         printf("Choisir le nombre de répétitions souhaité : ");
         gmp_scanf("%Zd", &rep);
-        testFermat(n,rep);
+        if(mpz_cmp_si(n,4)<=0)
+			{
+				if(mpz_cmp_si(n,2)==0 || mpz_cmp_si(n,3)==0)
+					printf("Le nombre est premier \n");
+				else 
+					printf("Le nombre est n'est pas premier \n");
+			}
+		else
+			testFermat(n,rep);
         mpz_clear(n);
         mpz_clear(rep);
         return 0;
