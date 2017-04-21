@@ -53,6 +53,12 @@ void testFermat(mpz_t n, mpz_t rep)
                 if(mpz_cmp_si(r,1)!=0)
                 {
                         printf("Le nombre est composé \n");
+						mpz_clear(i);
+						mpz_clear(n2);
+						mpz_clear(a);
+						mpz_clear(r);
+						mpz_clear(n3);
+						gmp_randclear(state);
                         return ;
                 }
                 mpz_add_ui(i,i,1);
