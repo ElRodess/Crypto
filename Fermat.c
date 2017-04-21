@@ -45,7 +45,7 @@ void testFermat(mpz_t n, mpz_t rep)
         mpz_init(n3);
         mpz_sub_ui(n3,n,3);
 
-        while(mpz_cmp(i,rep)<=0 && mpz_cmp(n,2)!= 0  && mpz_cmp(n,3)!=0)
+        while(mpz_cmp(i,rep)<=0 && mpz_cmp_si(n,2)!= 0  && mpz_cmp_si(n,3)!=0)
         {
                 mpz_urandomm(a,state,n3);
                 mpz_add_ui(a,a,2);
