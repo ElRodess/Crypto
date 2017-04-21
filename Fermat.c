@@ -25,27 +25,27 @@ void testFermat(mpz_t n, mpz_t rep)
 {
         gmp_randstate_t state;
         gmp_randinit_mt(state);
-        gmp_randseed_ui(state, time(NULL)); 
-        
+        gmp_randseed_ui(state, time(NULL));
+
         mpz_t i;
         mpz_init(i);
-        mpz_set_si(i,1); 
-        
+        mpz_set_si(i,1);
+
         mpz_t n2;
         mpz_init(n2);
         mpz_sub_ui(n2,n,1);
-        
+
         mpz_t a;
         mpz_init(a);
-        
+
         mpz_t r;
         mpz_init(r);
-        
+
         mpz_t n3;
         mpz_init(n3);
-        mpz_sub_ui(n3,n,4);
+        mpz_sub_ui(n3,n,3);
 
-        while(mpz_cmp(i,rep)<=0)
+        while(mpz_cmp(i,rep)<=0 && mpz_cmp(n,2)!= 0  && mpz_cmp(n,3)!=0)
         {
                 mpz_urandomm(a,state,n3);
                 mpz_add_ui(a,a,2);
@@ -57,7 +57,7 @@ void testFermat(mpz_t n, mpz_t rep)
                 }
                 mpz_add_ui(i,i,1);
         }
-        
+
         printf("Le nombre est premier \n");
         mpz_clear(i);
         mpz_clear(n2);
@@ -77,15 +77,7 @@ int main()
         gmp_scanf("%Zd", &n);
         printf("Choisir le nombre de répétitions souhaité : ");
         gmp_scanf("%Zd", &rep);
-        if(mpz_cmp_si(n,4)<=0)
-			{
-				if(mpz_cmp_si(n,2)==0 || mpz_cmp_si(n,3)==0)
-					printf("Le nombre est premier \n");
-				else 
-					printf("Le nombre est n'est pas premier \n");
-			}
-		else
-			testFermat(n,rep);
+		    testFermat(n,rep);
         mpz_clear(n);
         mpz_clear(rep);
         return 0;
