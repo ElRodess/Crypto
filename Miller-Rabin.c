@@ -24,7 +24,7 @@ void S_and_M(mpz_t a,mpz_t n,mpz_t h, mpz_t r)
 void M2Pow(mpz_t s,mpz_t S_pow)
 {
   int i = 0;
-  while(mpz_cmp(i,s) < 0 )
+  while(mpz_cmp(i,s) <= 0 )
   {
     mpz_mul_ui(s,s,2);
     i++;
@@ -33,9 +33,11 @@ void M2Pow(mpz_t s,mpz_t S_pow)
 
 void Decomp(mpz_t x,mpz_t s,mpz_t t)
 {
-mpz_t y; mpz_t S_pow;
+mpz_t y,S_pow;
 mpz_init(y);mpz_init(S_pow);
 mpz_set_ui(y,0);
+printf("flag1 \n");
+gmp_printf("s = %Zd \n",&s);
 while(mpz_cmp(x,y)!=0)
 {
   mpz_add_ui(s,s,1);
@@ -53,9 +55,10 @@ mpz_clear(y);mpz_clear(S_pow);
 
 void Miller_Rabin(mpz_t n, mpz_t rep)
 {
-  mpz_t s;mpz_t t;mpz_t x;
+  mpz_t s,t,x;
   mpz_init(s);mpz_init(t);mpz_init(x);
-  mpz_set_ui(s,1);mpz_set_ui(t,1);mpz_sub_ui(x,n,1);
+  mpz_set_ui(t,1);mpz_sub_ui(x,n,1);mpz_set_ui(s,0);
+  gmp_printf("s = %Zd \n",&s);
   Decomp(x,s,t);
   gmp_printf("s = %Zd \n t= %Zd\n", &s,&t);
   mpz_clear(s);mpz_clear(t);mpz_clear(x);
