@@ -1,8 +1,8 @@
-all: main.o
-	gcc main.o -o Primalite -lgmp
+all: dm.o
+	gcc dm.o -o Primalite -lgmp
 
-main.o: main.c 
-	gcc -o main.o -c main.c -lgmp 
+dm.o: dm.c 
+	gcc -o dm.o -c dm.c -lgmp 
 
 run:
 	./Primalite

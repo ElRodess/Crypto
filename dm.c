@@ -199,17 +199,24 @@ int main()
         printf("\n");
         printf("Choisir votre entier à tester : ");
         gmp_scanf("%Zd", &n);
-        printf("Choisir le nombre de répétitions souhaité : ");
-        gmp_scanf("%Zd", &rep);
-        printf("#########################################################\n");
-        printf("Miller_Rabin : ");
-        Miller_Rabin(n,rep);
-        printf("\n");
-        printf("Fermat : ");
-        testFermat(n,rep);
-        printf("#########################################################\n");
-		printf("taper 1 pour tester un autre nombre !");
-		scanf("%d",&t);
+        if(mpz_cmp_ui(n,1)<=0)
+        {	
+			printf("\n Veuillez choisir un entier supérieur à 1 !");
+		}
+		else
+		{
+			printf("Choisir le nombre de répétitions souhaité : ");
+			gmp_scanf("%Zd", &rep);
+			printf("#########################################################\n");
+			printf("Miller_Rabin : ");
+			Miller_Rabin(n,rep);
+			printf("\n");
+			printf("Fermat : ");
+			testFermat(n,rep);
+			printf("#########################################################\n");
+			printf("taper 1 pour tester un autre nombre !");
+			scanf("%d",&t);
+		}	
 	}
 	mpz_clear(n);	
 	mpz_clear(rep);
