@@ -1,4 +1,4 @@
-Programme test de primalité selon le test de Fermat et de Miller-Rabin.
+Programme de test de primalité selon le test de Fermat et de Miller-Rabin.
 
 Renseigner un nombre à tester puis le nombre de répetitions voulu.
 
@@ -8,9 +8,9 @@ Taper 1 pour tester un autre nombre à la fin des tests. Taper un autre chiffre 
 Pour éxecuter le programme :
 
 Dans le terminal:  make
-		make run 
+			make run 
 					
-Pour enlevé les fichiers créés par l'éxecution : make clean
+Pour enlever les fichiers créés par l'éxecution : make clean
 
 **************************************************************************
 
